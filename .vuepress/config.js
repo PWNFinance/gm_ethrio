@@ -72,7 +72,7 @@ module.exports = {
         link: "/calendar/",
       },
       {
-        text: "EthSamba",
+        text: "ETHSamba",
         link: "https://www.ethsamba.org/",
       },
     ],
