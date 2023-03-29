@@ -44,6 +44,11 @@ module.exports = {
       desc: "EthSamba Hack will happen at the Centro de Convenções Florida located in Catete one of the historic districts of Rio de Janeiro and with access to the attached Museum of the Republic which has some of the nicest open gardens in the city. A surprise Hacker House will be announced soon!",
       path: "EthSamba_venue.jpg",
     },
+    {
+      name: "ETHSamba Hacker House",
+      desc: "The Hacker House of EthSamba that will be open 24 hours from the start of the Hackathon. In it, all you need is to build your best project and take quick breaks by jumping in the pool or admiring the view!",
+      path: "ethsambahack.jpeg",
+    },
     
   ], // only if venue layout
   head: [

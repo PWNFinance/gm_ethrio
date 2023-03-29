@@ -3,13 +3,17 @@
     <!-- Date and time -->
     <div class="event-preview_left-column">
       <div class="event-preview_date">
-        <DateTime :date="event.frontmatter.date" :endDate="event.frontmatter.endDate" :time="event.frontmatter.time"
-          :endTime="event.frontmatter.endTime"/>
+        <div class="event-preview_date-add-to-calendar-and-event-time">
+          <DateTime :date="event.frontmatter.date" :endDate="event.frontmatter.endDate" :time="event.frontmatter.time"
+            :endTime="event.frontmatter.endTime"/>
+          <CalendarHelper :event="event" class="event-preview_calendar-helper"/>
+        </div>
         <Badge slot="after" :text="event.frontmatter.category" />
 
         <Badge v-if="event.frontmatter.featured" slot="after" :text="'TOP'" />
       </div>
 
+      
       <div class="event-preview_toggle-description-visibility--mobile">
         <img v-if="isMaximazed === false" height="35" width="35" src="./../public/plus.svg" alt="open" @click="isMaximazed = true"/>
         <img v-else  src="./../public/minus.svg" height="35"  width="35" alt="close" @click="isMaximazed = false"/>
@@ -21,30 +25,15 @@
       <div class="event-preview_content">
         <!-- Event's name -->
         <h2 class="event-preview_name">
-          <a class="event-preview_name-link":href="$withBase(event.path)">{{ event.frontmatter.name }}</a>
+          <a class="event-preview_name-link" :href="$withBase(event.path)">{{ event.frontmatter.name }}</a>
         </h2>
-    
+        
         <!-- Event's description -->
         <p class="event-preview_description" v-if="isMaximazed" >{{ event.frontmatter.description }}</p>
-        
-        <div class="ticket--container">
-        <!-- Ticket price -->
-        <span class="ticket--price">
-          Cost:&nbsp;{{ price(event) }}
-        </span>
-
-        <!-- Link to ticket sale -->
-        <span v-if="event.frontmatter.tickets" class="ticket--website">
-          <ExternalLink
-            :url="event.frontmatter.tickets"
-            caption="Website"
-            indicator="true"
-          />
-        </span>
-        </div>
       </div>
-
+      
       <div class="event-preview_toggle-description-visibility--desktop">
+        
         <img v-if="isMaximazed === false" height="35" width="35" src="./../public/plus.svg" alt="open" @click="isMaximazed = true"/>
         <img v-else  src="./../public/minus.svg" height="35"  width="35" alt="close" @click="isMaximazed = false"/>
       </div>
@@ -55,12 +44,13 @@
 </template>
 
 <script lang="ts">
+import CalendarHelper from "./CalendarHelper.vue";
 import DateTime from "./Event/DateTime.vue";
-import ExternalLink from "./Utils/ExternalLink.vue";
+import Badge from '../theme/Badge.vue'
 
 export default {
-  components: { DateTime, ExternalLink },
-  name: "Button",
+  components: { DateTime, CalendarHelper, Badge },
+  name: "EventPreview",
   props: {
     event: {
       type: Object,
@@ -70,13 +60,6 @@ export default {
   data() {
     return {
       isMaximazed: false,
-      price: (event) => {
-        let price = event.frontmatter.price;
-        if (!price || price === 0) {
-          return "Free";
-        }
-        return price;
-      },
     };
   },
 };
@@ -141,16 +124,11 @@ export default {
 
     &_name
       margin: 0.7rem 0 1.5rem 0
+.event-preview_date-add-to-calendar-and-event-time
+  display flex
+  flex-wrap: wrap;
+  gap 0.5rem
 
-    .ticket--container
-      gap: 0.3rem
-      display: flex
-      flex-direction: column
-
-    .ticket--price
-      // margin-right 1em
-
-    .ticket--website
-      a
-        color $primaryAccentColor
+.event-preview_calendar-helper
+  margin-top 1.5rem
 </style>

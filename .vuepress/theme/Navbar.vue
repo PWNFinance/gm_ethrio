@@ -14,8 +14,8 @@
             <NavLink :item="item"/>
           </div>
 
-          <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia"/>
-          <SearchBox v-else-if="$site.themeConfig.search !== false"/>
+          <!-- <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia"/> -->
+          <!-- <SearchBox v-else-if="$site.themeConfig.search !== false"/> -->
         </div>
         <Button class="menu_button-submit-event" buttonText="Submit Event" :to="this.config.sumbitEventLink" />
         <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
@@ -25,7 +25,7 @@
 
 <script>
 import SidebarButton from "./SidebarButton.vue";
-import AlgoliaSearchBox from "@AlgoliaSearchBox";
+// import AlgoliaSearchBox from "@AlgoliaSearchBox";
 import SearchBox from "./SearchBox.vue";
 import NavLink from "./NavLink.vue";
 import Button from "../components/Button.vue";
@@ -37,7 +37,7 @@ export default {
     SidebarButton,
     NavLink,
     SearchBox,
-    AlgoliaSearchBox,
+    // AlgoliaSearchBox,
     Button,
     LaneAbove,
   },

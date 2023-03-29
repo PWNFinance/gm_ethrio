@@ -24,7 +24,7 @@ export default {
 <style lang="stylus">
 
 .home
-  background url('~/matrix_cube_big.svg')
+  background url('/matrix_cube_big.svg')
   background-size cover
   background-position center top
   background-repeat no-repeat
