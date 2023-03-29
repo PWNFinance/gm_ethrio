@@ -89,7 +89,7 @@ address: R. do Catete, 183 - Glória, Rio de Janeiro - RJ, 22220-000
 # - workshop
 # - party
 # Use _only_ one, and don't capitalize.
-category: conference
+category: hackathon
 
 
 #################
